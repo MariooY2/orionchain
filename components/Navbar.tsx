@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <a href="#home">
             <Image
-              src="/Logo.png"
+              src="/logo.png"
               alt="OrionChain Logo"
               width={60}
               height={60}
