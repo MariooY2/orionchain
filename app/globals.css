@@ -26,6 +26,23 @@
 html {
   scroll-behavior: smooth;
 }
+
+
+.moving-image {
+  animation: moveUpDown 5s ease-in-out infinite; /* Infinite up and down movement */
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px); /* Adjust the amount to control the distance moved */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 @keyframes scrollGradient {
   0% {
     background-position: 0% 50%;

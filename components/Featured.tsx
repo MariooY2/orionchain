@@ -50,7 +50,7 @@ const FeaturesSection = () => {
     <section id="services" className="py-10">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-5xl font-bold text-white mb-12">
-          Why Choose OrionChain?
+          Why Choose Us?
         </h2>
         <div className="grid sm:grid-cols-2 grid-cols-1 md:grid-cols-3 gap-12">
           {features.map((feature, index) => (
