@@ -14,7 +14,7 @@ function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-row justify-around flex-wrap md:gap-0 gap-1 ">
           <div className="md:w-1/4 w-5/12 mb-6 lg:mb-0">
-            <h2 className="text-2xl font-bold mb-2">OrionChain</h2>
+            <h2 className="text-xl font-bold mb-2">OrionChain</h2>
             <p className="mb-4">Building the future.</p>
             <div className="w-full h-44 relative">
               <Image
