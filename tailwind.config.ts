@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        custom: "#a946f8",
+      },
+      animation: {
+        "spin-slow": "spin 20s linear infinite", // Slow spin effect
       },
     },
   },

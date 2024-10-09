@@ -2,26 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: linear-gradient(to bottom, #ffffff, #a946f8);
+    --background2: linear-gradient(to top, #e4b4f3, #a946f8);
+    --foreground: #ffffff;
   }
 }
 
-body {
+.Hero {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-size: 100%;
+  background-position: center;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.Test {
+  color: var(--foreground);
+  background: var(--background2);
+  background-size: 100%;
+  background-position: center;
+  animation: scrollGradient 1s linear infinite;
+}
+html {
+  scroll-behavior: smooth;
+}
+@keyframes scrollGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
