@@ -74,7 +74,7 @@ function Footer() {
                 <FaInstagram size={30} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/orion-chain"
                 className="text-white hover:text-purple-950"
               >
                 <FaLinkedinIn size={30} />

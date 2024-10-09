@@ -36,14 +36,14 @@ const projects = [
   },
 
   {
-    image: "/Mercedes-shop.png",
+    image: "/Mercedes-Shop.png",
     title: "Car Shop",
     description:
       "A sleek, fully responsive car shop website for showcasing and selling cars.",
     link: "https://car-shop-woad.vercel.app/",
   },
   {
-    image: "/uncoocked.png",
+    image: "/Uncoocked.png",
     title: "Uncooked - Web App",
     description:
       "A dynamic web app built with a focus on speed and functionality.",
