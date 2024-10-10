@@ -6,9 +6,9 @@ const ReasonsToChooseUs = () => {
     <div className="flex flex-col md:flex-row w-full justify-around items-center">
       {/* Left Section */}
       <div className="w-full md:w-1/2 flex flex-col items-center mb-8 md:mb-0">
-        <div className="text-center mb-6">
-          <h4 className="text-4xl font-bold">
-            <mark className="text-blue-600 text-8xl">3</mark> Reasons to Choose
+        <div className="mb-6">
+          <h4 className="sm:text-3xl text-2xl font-bold flex justify-end items-end">
+            <span className="text-blue-600 sm:text-8xl text-6xl mr-2">3</span> Reasons to Choose
             Us
           </h4>
         </div>
@@ -54,9 +54,9 @@ const ReasonsToChooseUs = () => {
           <div className="space-y-2">
             <h4 className="text-xl font-bold">Time and Quality</h4>
             <p className="text-black">
-              Time is irreversible and quality is uncompromisable. And that&apos;s
-              why we make sure you get your product delivered on time with
-              quality.
+              Time is irreversible and quality is uncompromisable. And
+              that&apos;s why we make sure you get your product delivered on
+              time with quality.
             </p>
           </div>
         </div>
