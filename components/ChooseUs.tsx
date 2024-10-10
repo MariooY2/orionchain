@@ -54,7 +54,7 @@ const ReasonsToChooseUs = () => {
           <div className="space-y-2">
             <h4 className="text-xl font-bold">Time and Quality</h4>
             <p className="text-black">
-              Time is irreversible and quality is uncompromisable. And that's
+              Time is irreversible and quality is uncompromisable. And that&apos;s
               why we make sure you get your product delivered on time with
               quality.
             </p>
