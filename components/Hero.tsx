@@ -19,17 +19,17 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="Hero text-white mt-14 min-h-screen flex justify-center items-center"
+      className=" Hero text-white sm:mt-14 mt-24 min-h-screen flex justify-center items-center"
     >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
         <div className="lg:w-1/2 w-full">
           <div className="flex justify-center items-center">
             <div className="w-4/5">
-              <h1 className="text-center md:text-6xl text-4xl font-bold mb-4 text-custom">
+              <h1 className="text-center md:text-6xl xs:text-4xl text-2xl font-bold mb-4 text-custom">
                 OrionChain Is the Future of
                 <span className="block text-center">Development</span>
               </h1>
-              <p className="text-xl mb-6 font-bold">
+              <p className="text-xl mb-6 text-black">
                 Our mission is to empower businesses and developers by providing
                 innovative website solutions and decentralized applications
                 (DApps) that leverage cutting-edge blockchain technology. We are
