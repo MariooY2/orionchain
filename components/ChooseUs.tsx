@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const ReasonsToChooseUs = () => {
   return (
@@ -12,9 +13,11 @@ const ReasonsToChooseUs = () => {
           </h4>
         </div>
         <div className="sm:flex justify-center items-center  hidden">
-          <img
+          <Image
             src="https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/why-choose-us.png"
             alt="Why Choose Us"
+            width={600} // You should set an appropriate width
+            height={400} // And an appropriate height
             className="max-w-full h-96"
           />
         </div>
@@ -23,15 +26,15 @@ const ReasonsToChooseUs = () => {
       <div className="w-4/5 md:w-1/2 flex flex-col gap-12">
         {/* Custodian of Your Project(s) */}
         <div className="flex items-start ">
-          <img
+          <Image
             src="https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/Custodian.svg"
             alt="Custodian"
+            width={48} // Set the width
+            height={48} // Set the height
             className="w-12 h-12 mr-4"
           />
           <div className="space-y-2">
-            <h4 className="text-xl font-bold">
-              Custodian of Your Project(s)
-            </h4>
+            <h4 className="text-xl font-bold">Custodian of Your Project(s)</h4>
             <p className="text-black">
               We become the custodian of your project(s) or idea(s) and take
               them to fruition considering them as our own.
@@ -41,9 +44,11 @@ const ReasonsToChooseUs = () => {
 
         {/* Time and Quality */}
         <div className="flex items-start">
-          <img
+          <Image
             src="https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/Time-and-quality.svg"
             alt="Time and Quality"
+            width={48} // Set the width
+            height={48} // Set the height
             className="w-12 h-12 mr-4"
           />
           <div className="space-y-2">
@@ -56,10 +61,13 @@ const ReasonsToChooseUs = () => {
           </div>
         </div>
 
+        {/* End to End Service */}
         <div className="flex items-start">
-          <img
+          <Image
             src="https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/End-to-end.svg"
             alt="End to End Service"
+            width={48} // Set the width
+            height={48} // Set the height
             className="w-12 h-12 mr-4"
           />
           <div className="space-y-2">
