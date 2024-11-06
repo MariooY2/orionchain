@@ -2,6 +2,12 @@ import Project from "./Project";
 
 const projects = [
   {
+    image: "/Web3.png",
+    title: "DApp Marketplace",
+    description: "A Decentralized marketplace built on the sepolia testnet.",
+    link: "https://web3-project1.vercel.app/",
+  },
+  {
     image: "/store.png",
     title: "E-Commerce Shop",
     description: "An online store built with modern eCommerce functionalities.",
