@@ -35,7 +35,7 @@ const ReasonsToChooseUs = () => {
           />
           <div className="space-y-2">
             <h4 className="text-xl font-bold">Custodian of Your Project(s)</h4>
-            <p className="text-black">
+            <p className="text-black w-10/12">
               We become the custodian of your project(s) or idea(s) and take
               them to fruition considering them as our own.
             </p>
@@ -53,7 +53,7 @@ const ReasonsToChooseUs = () => {
           />
           <div className="space-y-2">
             <h4 className="text-xl font-bold">Time and Quality</h4>
-            <p className="text-black">
+            <p className="text-black  w-10/12">
               Time is irreversible and quality is uncompromisable. And
               that&apos;s why we make sure you get your product delivered on
               time with quality.
@@ -72,7 +72,7 @@ const ReasonsToChooseUs = () => {
           />
           <div className="space-y-2">
             <h4 className="text-xl font-bold">End to End Service</h4>
-            <p className="text-black">
+            <p className="text-black  w-10/12">
               We are an end-to-end service provider. Our services range from
               design to development, testing, deployment, and marketing.
             </p>

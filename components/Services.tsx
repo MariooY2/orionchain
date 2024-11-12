@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLaptopCode, FaHeadset, FaCogs } from "react-icons/fa";
+import { FaLaptopCode, FaHeadset } from "react-icons/fa";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { SiBlockchaindotcom } from "react-icons/si";
 import { MdNoEncryptionGmailerrorred } from "react-icons/md";
@@ -17,12 +17,6 @@ const servicesData = [
     description:
       "Get professional web design services that offer user-friendly and visually appealing interfaces tailored for Web3 projects.",
     icon: <MdOutlineDesignServices size={100} />, 
-  },
-  {
-    title: "Quality software product",
-    description:
-      "You get an efficient and scalable digital product. During our cooperation, we make sure the final solution is maintainable and brings real value.",
-    icon: <FaCogs size={100} />, 
   },
   {
     title: "Customer Support",
