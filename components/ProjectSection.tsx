@@ -97,7 +97,7 @@ const ProjectsSection = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       id="projects"
-      className="py-10"
+      className="py-10  overflow-hidden"
     >
       <div className="container mx-auto px-6 text-center">
         <motion.h2

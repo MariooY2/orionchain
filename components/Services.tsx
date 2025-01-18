@@ -53,7 +53,7 @@ const Services = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       id="services"
-      className="container mx-auto py-12 px-8"
+      className="container mx-auto py-12 px-8  overflow-hidden"
     >
       <motion.h2
         initial={{ y: -20, opacity: 0 }}

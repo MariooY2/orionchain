@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white fixed w-full top-0 left-0 z-50 bg-opacity-80 transition duration-300">
+    <nav className="bg-white fixed w-full top-0 left-0 z-50 bg-opacity-80 transition duration-300  overflow-hidden">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <div className="flex items-center">
           <a href="#home">

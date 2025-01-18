@@ -30,7 +30,7 @@ const ReasonsToChooseUs = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="container mx-auto px-6 py-12"
+      className="container mx-auto px-6 py-12 overflow-hidden"
     >
       <div className="flex flex-col md:flex-row w-full justify-around items-center">
         <motion.div
