@@ -1,6 +1,22 @@
+"use client";
+import { motion } from "framer-motion";
 import Project from "./Project";
 
 const projects = [
+  {
+    image: "/memecoin.png",
+    title: "Static Website for a Memecoin Project",
+    description:
+      "A clean and engaging static website designed for a memecoin project, showcasing its features, roadmap, and community highlights.",
+    link: "https://memecoinproject1.vercel.app/",
+  },
+  {
+    image: "/web3game.png",
+    title: "Rock Paper Scissors Game On-Chain",
+    description:
+      "A decentralized Rock Paper Scissors game built on the Sepolia testnet, leveraging blockchain technology for transparent and secure gameplay.",
+    link: "https://finalproject-phi-six.vercel.app/",
+  },
   {
     image: "/Web3.png",
     title: "DApp Marketplace",
@@ -12,6 +28,13 @@ const projects = [
     title: "E-Commerce Shop",
     description: "An online store built with modern eCommerce functionalities.",
     link: "https://store-three-ecru.vercel.app/",
+  },
+  {
+    image: "/ogwebsite.png",
+    title: "Classic Portfolio Website",
+    description:
+      "A clean and timeless portfolio website showcasing personal projects, skills, and achievements in a user-friendly and professional layout.",
+    link: "https://redditfreelance8.vercel.app/",
   },
   {
     image: "/fithub.png",
@@ -40,7 +63,6 @@ const projects = [
     description: "A beautifully designed website for a high-end beauty salon.",
     link: "https://www.kuartz777.com/",
   },
-
   {
     image: "/Mercedes-Shop.png",
     title: "Car Shop",
@@ -58,14 +80,43 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  return (
-    <section id="projects" className="py-10 ">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-5xl font-bold text-white mb-8">
-          Previous Projects
-        </h2>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-12">
+  return (
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      id="projects"
+      className="py-10"
+    >
+      <div className="container mx-auto px-6 text-center">
+        <motion.h2
+          initial={{ y: -20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-5xl font-bold text-white mb-8"
+        >
+          Previous Projects
+        </motion.h2>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-12"
+        >
           {projects.map((project, index) => (
             <Project
               key={index}
@@ -75,9 +126,9 @@ const ProjectsSection = () => {
               link={project.link}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
