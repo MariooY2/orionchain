@@ -85,26 +85,36 @@ const ProjectsSection = () => {
     visible: {
       opacity: 1,
       transition: {
+        delayChildren: 0.3,
         staggerChildren: 0.1,
+      },
+    },
+  };
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
       },
     },
   };
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      id="projects"
-      className="py-10  overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      variants={containerVariants}
+      viewport={{ once: true, amount: 0.1 }} // Adjust viewport trigger
+      className="py-10 overflow-hidden"
     >
       <div className="container mx-auto px-6 text-center">
         <motion.h2
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={{
+            hidden: { y: -20, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
           className="text-5xl font-bold text-white mb-8"
         >
           Previous Projects
@@ -112,19 +122,17 @@ const ProjectsSection = () => {
 
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-12"
         >
           {projects.map((project, index) => (
-            <Project
-              key={index}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              link={project.link}
-            />
+            <motion.div key={index} variants={itemVariants}>
+              <Project
+                image={project.image}
+                title={project.title}
+                description={project.description}
+                link={project.link}
+              />
+            </motion.div>
           ))}
         </motion.div>
       </div>
