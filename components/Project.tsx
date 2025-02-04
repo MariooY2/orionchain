@@ -15,7 +15,7 @@ const Project = ({
   return (
     <Link
       href={link}
-      className="text-custom block rounded-lg shadow-lg p-6 bg-slate-100 hover:shadow-2xl hover:scale-105 transform transition-transform duration-300"
+      className="h-full text-custom block rounded-lg shadow-lg p-6 bg-slate-100 hover:shadow-2xl hover:scale-105 transform transition-transform duration-300"
     >
       <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
         <Image

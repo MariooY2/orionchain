@@ -72,8 +72,17 @@ const Services = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ scale: 1.05, backgroundColor: "#f3f4f6" }}
-            className="flex flex-col items-center text-center p-6 shadow-2xl rounded-lg"
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "#f3f4f6",
+              color: "#a946f8",
+            }}
+            whileTap={{
+              scale: 0.95, 
+              backgroundColor: "#f3f4f6",
+              color: "#a946f8",
+            }}
+            className="flex flex-col items-center text-center p-6 shadow-2xl rounded-lg "
           >
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
@@ -84,7 +93,9 @@ const Services = () => {
             >
               {service.icon}
             </motion.div>
+
             <h4 className="text-xl font-bold mb-2">{service.title}</h4>
+
             <p className="text-black">{service.description}</p>
           </motion.div>
         ))}

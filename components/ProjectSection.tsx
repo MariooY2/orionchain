@@ -4,6 +4,13 @@ import Project from "./Project";
 
 const projects = [
   {
+    image: "/Crowdfund.png",
+    title: "CrowdFund Dapp on Sepolia Testnet",
+    description:
+      "A decentralized application (Dapp) for crowdfunding projects on the Sepolia testnet.",
+    link: "https://crowd-fund-mu.vercel.app/",
+  },
+  {
     image: "/memecoin.png",
     title: "Static Website for a Memecoin Project",
     description:
