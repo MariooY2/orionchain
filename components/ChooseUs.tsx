@@ -30,7 +30,7 @@ const ReasonsToChooseUs = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="container mx-auto px-6 py-12 overflow-hidden"
+      className="container mx-auto px-6 py-12 overflow-hidden cursor-pointer"
     >
       <div className="flex flex-col md:flex-row w-full justify-around items-center">
         <motion.div
@@ -45,13 +45,13 @@ const ReasonsToChooseUs = () => {
             transition={{ duration: 0.3 }}
             className="mb-6"
           >
-            <h4 className="sm:text-3xl text-2xl font-bold flex justify-end items-end">
+            <h4 className="sm:text-3xl text-2xl font-bold flex justify-end items-end text-white">
               <motion.span
                 initial={{ scale: 0.5, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-blue-600 sm:text-8xl text-6xl mr-2"
+                className="text-white sm:text-8xl text-6xl mr-2"
               >
                 3
               </motion.span>
@@ -90,7 +90,7 @@ const ReasonsToChooseUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{ scale: 1.05 }}
-              className="flex items-start"
+              className="flex items-start p-6 rounded-lg shadow-2xl bg-gray-50"
             >
               <Image
                 src={item.icon}
@@ -100,8 +100,10 @@ const ReasonsToChooseUs = () => {
                 className="w-12 h-12 mr-4"
               />
               <div className="space-y-2">
-                <h4 className="text-xl font-bold">{item.title}</h4>
-                <p className="text-black w-10/12">{item.description}</p>
+                <h4 className="text-xl font-bold text-purple-500">
+                  {item.title}
+                </h4>
+                <p className="text-purple-500 w-10/12">{item.description}</p>
               </div>
             </motion.div>
           ))}

@@ -53,7 +53,7 @@ const Services = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       id="services"
-      className="container mx-auto py-12 px-8  overflow-hidden"
+      className="container mx-auto py-12 px-8 overflow-hidden cursor-pointer"
     >
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
@@ -74,29 +74,25 @@ const Services = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{
               scale: 1.05,
-              backgroundColor: "#f3f4f6",
-              color: "#a946f8",
             }}
             whileTap={{
-              scale: 0.95, 
-              backgroundColor: "#f3f4f6",
-              color: "#a946f8",
+              scale: 0.95,
             }}
-            className="flex flex-col items-center text-center p-6 shadow-2xl rounded-lg "
+            className="flex flex-col items-center text-center p-6 shadow-2xl rounded-lg bg-gray-50 text-purple-500"
           >
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-              className="mb-4 text-blue-500"
+              className="mb-4 text-purple-500"
             >
               {service.icon}
             </motion.div>
 
             <h4 className="text-xl font-bold mb-2">{service.title}</h4>
 
-            <p className="text-black">{service.description}</p>
+            <p className="text-purple-500">{service.description}</p>
           </motion.div>
         ))}
       </div>

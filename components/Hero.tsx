@@ -22,7 +22,7 @@ const HeroSection = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         id="home"
-        className=" text-white sm:mt-14 mt-24 h-screen max-h-[65rem] flex justify-center items-center  overflow-hidden"
+        className="text-purple-500 sm:mt-14 mt-24 h-screen max-h-[65rem] flex justify-center items-center overflow-hidden"
       >
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center max-h-screen">
           <motion.div
@@ -37,7 +37,7 @@ const HeroSection = () => {
                   initial={{ y: -20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="text-center md:text-6xl xs:text-4xl text-2xl font-bold mb-4 text-custom"
+                  className="text-center md:text-6xl xs:text-4xl text-2xl font-bold mb-4 text-purple-500"
                 >
                   OrionChain Is the Future of
                   <span className="block text-center">Development</span>
@@ -46,7 +46,7 @@ const HeroSection = () => {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="text-xl mb-6 text-black"
+                  className="text-xl mb-6 text-white"
                 >
                   Our mission is to empower businesses and developers by
                   providing innovative website solutions and decentralized
@@ -61,7 +61,7 @@ const HeroSection = () => {
                 >
                   <Link
                     href="#contact"
-                    className="bg-custom hover:bg-pink-950 text-white py-5 px-7 rounded-full transition duration-300"
+                    className="bg-purple-500 hover:bg-purple-600 text-white py-5 px-7 rounded-full transition duration-300 shadow-lg"
                   >
                     Contact Us
                   </Link>
@@ -81,6 +81,7 @@ const HeroSection = () => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <Image
                   src={images[currentImage]}
