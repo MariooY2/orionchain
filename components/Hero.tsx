@@ -10,10 +10,10 @@ const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+      setCurrentImage((prevImage) => (prevImage + 1) );
     }, 10000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, );
 
   return (
     <div className="Hero">
