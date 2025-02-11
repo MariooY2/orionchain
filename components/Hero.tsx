@@ -10,7 +10,10 @@ const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (currentImage == 3) setCurrentImage(0);
+      if (currentImage == 2) {
+        setCurrentImage(0);
+        return;
+      }
       setCurrentImage((prevImage) => prevImage + 1);
     }, 10000);
     return () => clearInterval(interval);
@@ -82,7 +85,6 @@ const HeroSection = () => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
               >
                 <Image
                   src={images[currentImage]}

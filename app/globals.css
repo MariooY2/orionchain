@@ -9,7 +9,9 @@
     --foreground: #ffffff;
   }
 }
-
+.pink-icon {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(2000%) hue-rotate(310deg) brightness(90%) contrast(90%);
+}
 .Hero {
   color: var(--foreground);
   background: var(--background);

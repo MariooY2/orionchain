@@ -85,7 +85,7 @@ const Services = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-              className="mb-4 text-purple-500"
+              className="mb-4 "
             >
               {service.icon}
             </motion.div>

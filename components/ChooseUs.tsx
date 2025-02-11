@@ -1,23 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaHandHoldingHeart, FaClock, FaCogs } from "react-icons/fa"; // Import icons
 
 const ReasonsToChooseUs = () => {
   const reasons = [
     {
-      icon: "https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/Custodian.svg",
+      icon: FaHandHoldingHeart, // Use React Icon component
       title: "Custodian of Your Project(s)",
       description:
         "We become the custodian of your project(s) or idea(s) and take them to fruition considering them as our own.",
     },
     {
-      icon: "https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/Time-and-quality.svg",
+      icon: FaClock, // Use React Icon component
       title: "Time and Quality",
       description:
         "Time is irreversible and quality is uncompromisable. And that's why we make sure you get your product delivered on time with quality.",
     },
     {
-      icon: "https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/End-to-end.svg",
+      icon: FaCogs, // Use React Icon component
       title: "End to End Service",
       description:
         "We are an end-to-end service provider. Our services range from design to development, testing, deployment, and marketing.",
@@ -92,13 +93,9 @@ const ReasonsToChooseUs = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-start p-6 rounded-lg shadow-2xl bg-gray-50"
             >
-              <Image
-                src={item.icon}
-                alt={item.title}
-                width={48}
-                height={48}
-                className="w-12 h-12 mr-4"
-              />
+              <div className="text-purple-500 w-12 h-12 mr-4 flex items-center justify-center">
+                <item.icon className="w-12 h-8"  /> {/* Render the React Icon */}
+              </div>
               <div className="space-y-2">
                 <h4 className="text-xl font-bold text-purple-500">
                   {item.title}
