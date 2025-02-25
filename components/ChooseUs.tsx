@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { FaHandHoldingHeart, FaClock, FaCogs } from "react-icons/fa"; // Import icons
+import { FaHandHoldingHeart, FaClock, FaCogs } from "react-icons/fa"; 
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const ReasonsToChooseUs = () => {
   const reasons = [
@@ -33,7 +33,7 @@ const ReasonsToChooseUs = () => {
       transition={{ duration: 0.8 }}
       className="container mx-auto px-6 py-12 overflow-hidden cursor-pointer"
     >
-      <div className="flex flex-col md:flex-row w-full justify-around items-center">
+      <div className="flex flex-col md:flex-row w-full items-center md:items-start">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -44,7 +44,7 @@ const ReasonsToChooseUs = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="mb-6"
+            className=""
           >
             <h4 className="sm:text-3xl text-2xl font-bold flex justify-end items-end text-white">
               <motion.span
@@ -61,17 +61,18 @@ const ReasonsToChooseUs = () => {
           </motion.div>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="sm:flex justify-center items-center hidden"
+            whileInView={{ scale: 1.15, opacity: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 2 }}
+            className="sm:flex items-center hidden"
           >
-            <Image
-              src="https://d25c7wiv62hyjr.cloudfront.net/wp-content/uploads/2022/06/why-choose-us.png"
-              alt="Why Choose Us"
-              width={600}
-              height={400}
-              className="max-w-full h-96"
+
+            <DotLottieReact
+              src="https://assets-v2.lottiefiles.com/a/b84f9736-1183-11ee-a697-63de6dcb6f4a/o4wnLNLmGL.lottie"
+              loop
+              autoplay
+              className="w-[30rem] h-[30rem]"
+              
             />
           </motion.div>
         </motion.div>
@@ -94,7 +95,7 @@ const ReasonsToChooseUs = () => {
               className="flex items-start p-6 rounded-lg shadow-2xl bg-gray-50"
             >
               <div className="text-purple-500 w-12 h-12 mr-4 flex items-center justify-center">
-                <item.icon className="w-12 h-8"  /> {/* Render the React Icon */}
+                <item.icon className="w-12 h-8" /> {/* Render the React Icon */}
               </div>
               <div className="space-y-2">
                 <h4 className="text-xl font-bold text-purple-500">

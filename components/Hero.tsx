@@ -1,24 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const HeroSection = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const images = ["/Explore1.svg", "/Explore2.svg", "/Explore3.svg"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentImage == 2) {
-        setCurrentImage(0);
-        return;
-      }
-      setCurrentImage((prevImage) => prevImage + 1);
-    }, 10000);
-    return () => clearInterval(interval);
-  });
-
   return (
     <div className="Hero">
       <motion.section
@@ -26,7 +11,7 @@ const HeroSection = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         id="home"
-        className="text-purple-500 sm:mt-14 mt-24 h-screen max-h-[65rem] flex justify-center items-center overflow-hidden"
+        className="text-purple-500 sm:mt-14 mt-24 h-screen max-h-[75rem] flex justify-center items-center overflow-hidden"
       >
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center max-h-screen">
           <motion.div
@@ -78,19 +63,22 @@ const HeroSection = () => {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:w-1/2 w-full mt-8 md:mt-0 justify-center flex"
+            className="md:w-3/5 w-full mt-8 md:mt-0 justify-center flex"
           >
-            <div className="relative w-full h-96 image-container">
+            <div className="relative w-full h-full container">
               <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                initial={{ scale: 1.1, opacity: 0 }}
+                whileInView={{ scale: 1.25, opacity: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 2 }}
+                className="transform scale-125"
               >
-                <Image
-                  src={images[currentImage]}
-                  alt="OrionChain Hero Image"
-                  fill
-                  className="object-fit moving-image"
+                <DotLottieReact
+                  src="https://assets-v2.lottiefiles.com/a/f5c769b2-117a-11ee-a103-13d1b13a7ac2/nzsMJcNS59.lottie"
+                  loop
+                  autoplay
+                  color="custom"
+                  className="w-full"
                 />
               </motion.div>
             </div>
