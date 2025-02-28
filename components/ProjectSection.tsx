@@ -4,6 +4,13 @@ import Project from "./Project";
 
 const projects = [
   {
+    image: "/NFT.png",
+    title: "Cosmic Voyagers NFT Project",
+    description:
+      "An exclusive NFT collection exploring the depths of space, offering unique digital art and utility within the blockchain universe.",
+    link: "https://nft-drop-teal.vercel.app/",
+  },
+  {
     image: "/Crowdfund.png",
     title: "CrowdFund Dapp on Sepolia Testnet",
     description:

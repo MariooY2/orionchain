@@ -17,12 +17,12 @@ const Project = ({
       href={link}
       className="h-full text-custom block rounded-lg shadow-lg p-6 bg-slate-100 hover:shadow-2xl hover:scale-105 transform transition-transform duration-300"
     >
-      <div className="relative w-full h-48 mb-4 overflow-hidden rounded-lg">
+      <div className="relative w-full h-56 mb-4 overflow-hidden rounded-lg">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 hover:scale-110"
+          className="object-contain transition-transform duration-300 hover:scale-110"
         />
         <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition duration-300"></div>
       </div>
