@@ -72,7 +72,7 @@ const ReasonsToChooseUs = () => {
               loop
               autoplay
               className="w-[30rem] h-[30rem]"
-              
+              speed={0.5}
             />
           </motion.div>
         </motion.div>
