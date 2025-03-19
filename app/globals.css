@@ -2,6 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 267 75% 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 267 75% 95%;
+    --accent-foreground: 267 75% 60%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 267 75% 60%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 267 75% 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 267 75% 60%;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: linear-gradient(to bottom, #ffffff, #a946f8);
@@ -9,15 +56,19 @@
     --foreground: #ffffff;
   }
 }
+
 .pink-icon {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(2000%) hue-rotate(310deg) brightness(90%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(2000%)
+    hue-rotate(310deg) brightness(90%) contrast(90%);
 }
+
 .Hero {
   color: var(--foreground);
   background: var(--background);
   background-size: 100%;
   background-position: center;
 }
+
 .Test {
   color: var(--foreground);
   background: var(--background2);
@@ -25,10 +76,10 @@
   background-position: center;
   animation: scrollGradient 1s linear infinite;
 }
+
 html {
   scroll-behavior: smooth;
 }
-
 
 .moving-image {
   animation: moveUpDown 5s ease-in-out infinite; /* Infinite up and down movement */
@@ -39,12 +90,15 @@ html {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-30px); /* Adjust the amount to control the distance moved */
+    transform: translateY(
+      -30px
+    ); /* Adjust the amount to control the distance moved */
   }
   100% {
     transform: translateY(0);
   }
 }
+
 @keyframes scrollGradient {
   0% {
     background-position: 0% 50%;
@@ -55,4 +109,51 @@ html {
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom gradient buttons */
+.btn-gradient {
+  background: linear-gradient(to right, #a946f8, #7e22ce);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to right, #a946f8, #7e22ce, #a946f8, #7e22ce);
+  transform: translateX(-50%);
+  transition: transform 0.5s ease;
+}
+
+.btn-gradient:hover::after {
+  transform: translateX(0);
+}
+
+.btn-gradient span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Improved cards */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(169, 70, 248, 0.15);
 }

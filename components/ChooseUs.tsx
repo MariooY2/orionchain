@@ -1,7 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
-import { FaHandHoldingHeart, FaClock, FaCogs } from "react-icons/fa"; 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { motion } from "framer-motion";
+import { FaClock, FaCogs, FaHandHoldingHeart } from "react-icons/fa";
 
 const ReasonsToChooseUs = () => {
   const reasons = [
@@ -66,7 +66,6 @@ const ReasonsToChooseUs = () => {
             transition={{ duration: 2 }}
             className="sm:flex items-center hidden"
           >
-
             <DotLottieReact
               src="https://assets-v2.lottiefiles.com/a/b84f9736-1183-11ee-a697-63de6dcb6f4a/o4wnLNLmGL.lottie"
               loop
