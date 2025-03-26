@@ -13,7 +13,7 @@ const HeroSection = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         id="home"
-        className="text-purple-500 sm:pt-24 pt-28 min-h-screen flex justify-center items-center overflow-hidden"
+        className="text-purple-500 sm:pt-24 pt-28 h-screen flex justify-center items-center overflow-hidden max-h-[65rem]"
       >
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <motion.div
