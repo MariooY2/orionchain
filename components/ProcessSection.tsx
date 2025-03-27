@@ -1,6 +1,6 @@
 "use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CheckIcon, CursorClickIcon, HeartIcon, SparklesIcon } from "./Icons";
 
 interface ProcessStepData {
@@ -16,19 +16,24 @@ interface ProcessStepProps {
   step: ProcessStepData;
   index: number;
   totalSteps: number;
+  isMobile: boolean;
 }
 
 // Create a separate component for each process step to properly use hooks
-const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
+const ProcessStep: React.FC<ProcessStepProps> = ({
+  step,
+  index,
+  isMobile,
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const isCardInView = useInView(cardRef, { once: false, amount: 0.6 });
+  const isCardInView = useInView(cardRef, { once: false, amount: 0.2 });
 
   return (
     <motion.div
       key={index}
       ref={cardRef}
       initial={{
-        x: index % 2 === 0 ? -50 : 50,
+        x: isMobile ? 0 : index % 2 === 0 ? -50 : 50,
         opacity: 0,
       }}
       animate={
@@ -37,34 +42,46 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
               x: 0,
               opacity: 1,
               transition: {
-                duration: 0.8,
-                delay: index * 0.15,
+                duration: isMobile ? 0.5 : 0.8,
+                delay: isMobile ? index * 0.1 : index * 0.15,
                 type: "spring",
-                stiffness: 50,
+                stiffness: isMobile ? 70 : 50,
                 damping: 20,
               },
             }
           : {}
       }
-      className={`relative ${
-        index % 2 === 0 ? "md:pr-12" : "md:pl-12 md:translate-y-24"
+      className={`relative mb-8 px-4 ${
+        !isMobile && index % 2 === 0
+          ? "md:pr-12"
+          : !isMobile
+          ? "md:pl-12 md:translate-y-24"
+          : ""
       }`}
     >
       <div
-        className={`flex ${
-          index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+        className={`flex flex-col items-center ${
+          !isMobile && index % 2 === 0
+            ? "md:items-end"
+            : !isMobile
+            ? "md:items-start"
+            : ""
         }`}
       >
         <motion.div
-          className="relative z-10 glass-effect rounded-xl p-6 md:p-8 max-w-md w-full h-full"
-          whileHover={{
-            y: -12,
-            transition: {
-              type: "spring",
-              stiffness: 300,
-              damping: 20,
-            },
-          }}
+          className="relative z-10 glass-effect rounded-xl p-6 md:p-8 max-w-md w-full h-full mx-3"
+          whileHover={
+            !isMobile
+              ? {
+                  y: -12,
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }
+              : {}
+          }
         >
           {/* Animated gradient border on hover */}
           <motion.div
@@ -73,7 +90,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
             transition={{ duration: 0.3 }}
           />
 
-          {/* Icon container (removed animation) */}
+          {/* Icon container */}
           <div className="flex justify-center mb-6 md:mb-8">
             <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full p-4 shadow-lg">
               {step.icon}
@@ -81,7 +98,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
           </div>
 
           <motion.div
-            className="text-center"
+            className="text-center px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={
               isCardInView
@@ -89,7 +106,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
                     opacity: 1,
                     y: 0,
                     transition: {
-                      delay: index * 0.15 + 0.4,
+                      delay: isMobile ? index * 0.1 + 0.2 : index * 0.15 + 0.4,
                       duration: 0.5,
                     },
                   }
@@ -113,7 +130,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
                   ? {
                       opacity: 1,
                       transition: {
-                        delay: index * 0.15 + 0.5,
+                        delay: isMobile
+                          ? index * 0.1 + 0.3
+                          : index * 0.15 + 0.5,
                         duration: 0.5,
                       },
                     }
@@ -133,7 +152,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
                       opacity: 1,
                       y: 0,
                       transition: {
-                        delay: index * 0.15 + 0.6,
+                        delay: isMobile
+                          ? index * 0.1 + 0.4
+                          : index * 0.15 + 0.6,
                         duration: 0.5,
                       },
                     }
@@ -155,7 +176,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
                             x: 0,
                             opacity: 1,
                             transition: {
-                              delay: index * 0.15 + 0.6 + actIndex * 0.1,
+                              delay: isMobile
+                                ? index * 0.1 + 0.4 + actIndex * 0.05
+                                : index * 0.15 + 0.6 + actIndex * 0.1,
                               duration: 0.4,
                             },
                           }
@@ -201,7 +224,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
                         opacity: 1,
                         y: 0,
                         transition: {
-                          delay: index * 0.15 + 0.8,
+                          delay: isMobile
+                            ? index * 0.1 + 0.5
+                            : index * 0.15 + 0.8,
                           duration: 0.5,
                         },
                       }
@@ -225,13 +250,40 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index }) => {
 
 const ProcessSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if we're on the client side
+    if (typeof window !== "undefined") {
+      // Set initial mobile state
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+      
+      // Run immediately
+      handleResize();
+      
+      window.addEventListener("resize", handleResize);
+      
+      // Clean up
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   // Parallax effect for the section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+
+  // Add opacity transform based on scroll (fallback visibility)
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.5, 1, 1, 0.5]);
+  
+  // Add parallax movement effect - THIS IS THE KEY ADDITION
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const processSteps: ProcessStepData[] = [
     {
@@ -350,10 +402,11 @@ const ProcessSection: React.FC = () => {
     <motion.section
       id="process"
       ref={sectionRef}
+      style={{ opacity }} // Add scroll-based opacity
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="py-12 md:py-20 overflow-hidden relative"
+      className="py-8 md:py-20 overflow-hidden relative px-4 md:px-6"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -389,46 +442,83 @@ const ProcessSection: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
+        {/* FIXED HEADER SECTION - NOW WITH PARALLAX EFFECT LIKE SERVICES */}
+        <motion.div 
+          style={{ y: textY }} // Add parallax movement effect
+          className="text-center relative z-10"
         >
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-xs md:text-sm font-medium mb-4"
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={
+              isInView
+                ? {
+                    scale: 1,
+                    opacity: 1,
+                    transition: {
+                      duration: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  }
+                : {}
+            }
+            className="max-w-3xl mx-auto mb-12 md:mb-20"
           >
-            Our Process
-          </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: -20 }}
+              animate={
+                isInView
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      transition: { delay: 0.2, duration: 0.5 },
+                    }
+                  : {}
+              }
+              className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-xs md:text-sm font-medium mb-4"
+            >
+              Our Process
+            </motion.span>
 
-          <motion.h2
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-white"
-          >
-            Our Comprehensive Development Process
-          </motion.h2>
+            <motion.h2
+              initial={{ y: 20, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: { delay: 0.3, duration: 0.7 },
+                    }
+                  : {}
+              }
+              className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-white"
+            >
+              Our Comprehensive Development Process
+            </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-white/80 text-sm md:text-lg"
-          >
-            We follow a structured, transparent process that ensures quality at
-            every step. From discovery to ongoing support, each phase is
-            designed to deliver exceptional results while keeping you informed
-            and involved throughout the journey.
-          </motion.p>
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              animate={
+                isInView
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                      transition: { delay: 0.4, duration: 0.7 },
+                    }
+                  : {}
+              }
+              className="text-white/80 text-sm md:text-lg"
+            >
+              We follow a structured, transparent process that ensures quality at
+              every step. From discovery to ongoing support, each phase is
+              designed to deliver exceptional results while keeping you informed
+              and involved throughout the journey.
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         <div className="relative pb-16 md:pb-24">
-          {/* Animated connecting line */}
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-600/30 to-indigo-600/30 hidden md:block">
+          {/* Animated connecting line - visible on mobile and desktop */}
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-600/30 to-indigo-600/30">
             <motion.div
               className="w-full bg-gradient-to-b from-purple-600 to-indigo-600 absolute top-0 left-0"
               style={{ height: lineProgressY }}
@@ -436,13 +526,14 @@ const ProcessSection: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 md:gap-x-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-8 relative">
             {processSteps.map((step, index) => (
               <ProcessStep
                 key={index}
                 step={step}
                 index={index}
                 totalSteps={processSteps.length}
+                isMobile={isMobile}
               />
             ))}
           </div>
