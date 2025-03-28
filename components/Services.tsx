@@ -74,7 +74,7 @@ const ServiceCard = ({
   index: number;
 }) => {
   const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: false, amount: 0.3 });
+  const isInView = useInView(cardRef, { once: true, amount: 0.4 });
   const [isHovered, setIsHovered] = useState(false);
 
   // Staggered entrance animations based on index
@@ -89,7 +89,7 @@ const ServiceCard = ({
       rotateY: 0,
       transition: {
         delay: entranceDelay + 0.2,
-        duration: 0.6,
+        duration: 10,
         type: "spring",
         stiffness: 100,
       },
@@ -220,7 +220,7 @@ const ServiceCard = ({
 
 const Services = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
 
   // Parallax text effect
   const { scrollYProgress } = useScroll({
@@ -337,7 +337,6 @@ const Services = () => {
           </motion.p>
         </motion.div>
       </motion.div>
-
       <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
           {servicesData.map((service, index) => (

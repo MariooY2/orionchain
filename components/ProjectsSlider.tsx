@@ -8,6 +8,20 @@ import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
+    image: "/Schedulytic.png",
+    title: "Scheduling System",
+    description:
+      "A full-fledged scheduling system with a user-friendly dashboard, appointment management, and all essential features for efficient time organization.",
+    link: "https://scheduling-app-alpha.vercel.app/",
+  },
+  {
+    image: "/Booking.png",
+    title: "Beauty Salon Management System",
+    description:
+      "A complete salon management system featuring an interactive dashboard, service bookings, and all necessary functionalities for smooth business operations.",
+    link: "https://beauty-salon-mauve.vercel.app/",
+  },
+  {
     image: "/NFT.png",
     title: "Cosmic Voyagers NFT Project",
     description:
@@ -55,45 +69,11 @@ const projects = [
     link: "https://redditfreelance8.vercel.app/",
   },
   {
-    image: "/fithub.png",
-    title: "Fitness Tracker",
-    description:
-      "A powerful and user-friendly fitness tracking app designed to help users monitor workouts, track progress, and set fitness goals.",
-    link: "https://fit-hub-theta.vercel.app/",
-  },
-  {
-    image: "/ptportfolio.png",
-    title: "Personal Trainer Portfolio",
-    description:
-      "A sleek and professional portfolio showcasing personal training services, client testimonials, and fitness programs.",
-    link: "https://pt-portfolio-seven.vercel.app/",
-  },
-  {
     image: "/sff.png",
     title: "SFF Ready - PC Case Tool",
     description:
       "A comprehensive tool to help users find the best PC cases for their setups.",
     link: "https://www.sffready.com/",
-  },
-  {
-    image: "/kuartz.png",
-    title: "Kuartz777 - Beauty Salon",
-    description: "A beautifully designed website for a high-end beauty salon.",
-    link: "https://www.kuartz777.com/",
-  },
-  {
-    image: "/Mercedes-Shop.png",
-    title: "Car Shop",
-    description:
-      "A sleek, fully responsive car shop website for showcasing and selling cars.",
-    link: "https://car-shop-woad.vercel.app/",
-  },
-  {
-    image: "/Uncoocked.png",
-    title: "Uncooked - Web App",
-    description:
-      "A dynamic web app built with a focus on speed and functionality.",
-    link: "https://www.uncooked.xyz/",
   },
 ];
 
@@ -189,7 +169,7 @@ const ProjectsSlider = () => {
             sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
           }
         }
-      }, 2000); 
+      }, 4000);
     }
 
     return () => {
