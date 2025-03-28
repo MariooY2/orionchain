@@ -220,7 +220,7 @@ const ServiceCard = ({
 
 const Services = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const isInView2 = useInView(sectionRef, { once: false, amount: 0.1 });
 
   // Parallax text effect
   const { scrollYProgress } = useScroll({
@@ -275,7 +275,7 @@ const Services = () => {
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={
-            isInView
+            isInView2
               ? {
                   scale: 1,
                   opacity: 1,
@@ -290,7 +290,7 @@ const Services = () => {
           <motion.span
             initial={{ opacity: 0, y: -20 }}
             animate={
-              isInView
+              isInView2
                 ? {
                     opacity: 1,
                     y: 0,
@@ -306,7 +306,7 @@ const Services = () => {
           <motion.h2
             initial={{ y: 20, opacity: 0 }}
             animate={
-              isInView
+              isInView2
                 ? {
                     y: 0,
                     opacity: 1,
@@ -322,7 +322,7 @@ const Services = () => {
           <motion.p
             initial={{ y: 30, opacity: 0 }}
             animate={
-              isInView
+              isInView2
                 ? {
                     y: 0,
                     opacity: 1,
