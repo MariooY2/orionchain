@@ -28,15 +28,15 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
     <motion.div
       key={index}
       ref={cardRef}
-      // Make the container immediately visible but animate position
       initial={{
-        x: isMobile ? 0 : index % 2 === 0 ? -150 : 150,
-        opacity: 1, // Keep the container visible immediately
+        x: isMobile ? 0 : index % 2 === 0 ? -50 : 50,
+        opacity: 0,
       }}
       animate={
         isCardInView
           ? {
               x: 0,
+              opacity: 1,
               transition: {
                 duration: isMobile ? 0.5 : 0.8,
                 delay: isMobile ? index * 0.1 : index * 0.15,
@@ -47,7 +47,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
             }
           : {}
       }
-      className={`relative mb-8 px-4 z-20 ${
+      className={`relative mb-8 px-4 ${
         !isMobile && index % 2 === 0
           ? "md:pr-12"
           : !isMobile
@@ -64,42 +64,83 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
             : ""
         }`}
       >
-        {/* Container with background to block the line */}
-        <div className="relative max-w-md w-full h-full mx-3">
-          {/* Solid background element that's immediately visible with glass effect */}
-          <div className="absolute inset-0 rounded-xl glass-effect z-10"></div>
+        <motion.div
+          className="relative z-10 glass-effect rounded-xl p-6 md:p-8 max-w-md w-full h-full mx-3"
+          whileHover={
+            !isMobile
+              ? {
+                  y: -12,
+                  transition: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }
+              : {}
+          }
+        >
+          {/* Animated gradient border on hover */}
+          <motion.div
+            className={`absolute inset-0 rounded-xl bg-gradient-to-r ${step.color} opacity-0`}
+            whileHover={{ opacity: 0.15 }}
+            transition={{ duration: 0.3 }}
+          />
+
+          {/* Icon container */}
+          <div className="flex justify-center mb-6 md:mb-8">
+            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full p-4 shadow-lg">
+              {step.icon}
+            </div>
+          </div>
 
           <motion.div
-            className="relative z-20 glass-effect rounded-xl p-6 md:p-8 max-w-md w-full h-full"
-            initial={{ opacity: 0 }}
+            className="text-center px-2"
+            initial={{ opacity: 0, y: 20 }}
             animate={
               isCardInView
                 ? {
                     opacity: 1,
+                    y: 0,
                     transition: {
+                      delay: isMobile ? index * 0.1 + 0.2 : index * 0.15 + 0.4,
                       duration: 0.5,
-                      delay: isMobile ? index * 0.1 : index * 0.15,
                     },
                   }
                 : {}
             }
           >
-            {/* Animated gradient border on hover */}
-            <motion.div
-              className={`absolute inset-0 rounded-xl bg-gradient-to-r ${step.color} opacity-0`}
-              whileHover={{ opacity: 0.15 }}
-              transition={{ duration: 0.3 }}
-            />
+            <motion.h3
+              className="text-xl md:text-2xl font-bold mb-3 text-white"
+              whileHover={{
+                color: "#e9d5ff",
+                transition: { duration: 0.3 },
+              }}
+            >
+              {step.title}
+            </motion.h3>
+            <motion.p
+              className="text-white/80 mb-4 text-sm md:text-base"
+              initial={{ opacity: 0 }}
+              animate={
+                isCardInView
+                  ? {
+                      opacity: 1,
+                      transition: {
+                        delay: isMobile
+                          ? index * 0.1 + 0.3
+                          : index * 0.15 + 0.5,
+                        duration: 0.5,
+                      },
+                    }
+                  : {}
+              }
+            >
+              {step.description}
+            </motion.p>
 
-            {/* Icon container */}
-            <div className="flex justify-center mb-6 md:mb-8">
-              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full p-4 shadow-lg">
-                {step.icon}
-              </div>
-            </div>
-
+            {/* Key activities list */}
             <motion.div
-              className="text-center px-2"
+              className="text-left mt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={
                 isCardInView
@@ -108,46 +149,70 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
                       y: 0,
                       transition: {
                         delay: isMobile
-                          ? index * 0.1 + 0.2
-                          : index * 0.15 + 0.4,
+                          ? index * 0.1 + 0.4
+                          : index * 0.15 + 0.6,
                         duration: 0.5,
                       },
                     }
                   : {}
               }
             >
-              <motion.h3
-                className="text-xl md:text-2xl font-bold mb-3 text-white"
-                whileHover={{
-                  color: "#e9d5ff",
-                  transition: { duration: 0.3 },
-                }}
-              >
-                {step.title}
-              </motion.h3>
-              <motion.p
-                className="text-white/80 mb-4 text-sm md:text-base"
-                initial={{ opacity: 0 }}
-                animate={
-                  isCardInView
-                    ? {
-                        opacity: 1,
-                        transition: {
-                          delay: isMobile
-                            ? index * 0.1 + 0.3
-                            : index * 0.15 + 0.5,
-                          duration: 0.5,
-                        },
-                      }
-                    : {}
-                }
-              >
-                {step.description}
-              </motion.p>
+              <h4 className="text-white/90 font-medium mb-2 text-xs md:text-sm">
+                KEY ACTIVITIES:
+              </h4>
+              <ul className="space-y-2">
+                {step.activities.map((activity, actIndex) => (
+                  <motion.li
+                    key={actIndex}
+                    className="flex items-start"
+                    initial={{ x: -10, opacity: 0 }}
+                    animate={
+                      isCardInView
+                        ? {
+                            x: 0,
+                            opacity: 1,
+                            transition: {
+                              delay: isMobile
+                                ? index * 0.1 + 0.4 + actIndex * 0.05
+                                : index * 0.15 + 0.6 + actIndex * 0.1,
+                              duration: 0.4,
+                            },
+                          }
+                        : {}
+                    }
+                  >
+                    <motion.div
+                      className="min-w-5 h-5 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center mr-2 md:mr-3 mt-0.5"
+                      whileHover={{
+                        scale: 1.2,
+                        backgroundColor: "rgba(168, 85, 247, 0.3)",
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3 w-3"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </motion.div>
+                    <span className="text-white/70 text-xs md:text-sm">
+                      {activity}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
 
-              {/* Key activities list */}
+            {/* Deliverables section */}
+            {step.deliverables && (
               <motion.div
-                className="text-left mt-4"
+                className="text-left mt-5 pt-4 border-t border-purple-500/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={
                   isCardInView
@@ -156,8 +221,8 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
                         y: 0,
                         transition: {
                           delay: isMobile
-                            ? index * 0.1 + 0.4
-                            : index * 0.15 + 0.6,
+                            ? index * 0.1 + 0.5
+                            : index * 0.15 + 0.8,
                           duration: 0.5,
                         },
                       }
@@ -165,88 +230,15 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ step, index, isMobile }) => {
                 }
               >
                 <h4 className="text-white/90 font-medium mb-2 text-xs md:text-sm">
-                  KEY ACTIVITIES:
+                  DELIVERABLES:
                 </h4>
-                <ul className="space-y-2">
-                  {step.activities.map((activity, actIndex) => (
-                    <motion.li
-                      key={actIndex}
-                      className="flex items-start"
-                      initial={{ x: -10, opacity: 0 }}
-                      animate={
-                        isCardInView
-                          ? {
-                              x: 0,
-                              opacity: 1,
-                              transition: {
-                                delay: isMobile
-                                  ? index * 0.1 + 0.4 + actIndex * 0.05
-                                  : index * 0.15 + 0.6 + actIndex * 0.1,
-                                duration: 0.4,
-                              },
-                            }
-                          : {}
-                      }
-                    >
-                      <motion.div
-                        className="min-w-5 h-5 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center mr-2 md:mr-3 mt-0.5"
-                        whileHover={{
-                          scale: 1.2,
-                          backgroundColor: "rgba(168, 85, 247, 0.3)",
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </motion.div>
-                      <span className="text-white/70 text-xs md:text-sm">
-                        {activity}
-                      </span>
-                    </motion.li>
-                  ))}
-                </ul>
+                <p className="text-white/70 text-xs md:text-sm">
+                  {step.deliverables}
+                </p>
               </motion.div>
-
-              {/* Deliverables section */}
-              {step.deliverables && (
-                <motion.div
-                  className="text-left mt-5 pt-4 border-t border-purple-500/20"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={
-                    isCardInView
-                      ? {
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            delay: isMobile
-                              ? index * 0.1 + 0.5
-                              : index * 0.15 + 0.8,
-                            duration: 0.5,
-                          },
-                        }
-                      : {}
-                  }
-                >
-                  <h4 className="text-white/90 font-medium mb-2 text-xs md:text-sm">
-                    DELIVERABLES:
-                  </h4>
-                  <p className="text-white/70 text-xs md:text-sm">
-                    {step.deliverables}
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
+            )}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -290,7 +282,7 @@ const ProcessSection: React.FC = () => {
     [0.5, 1, 1, 0.5]
   );
 
-  // Add parallax movement effect
+  // Add parallax movement effect - THIS IS THE KEY ADDITION
   const textY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const processSteps: ProcessStepData[] = [
@@ -525,8 +517,8 @@ const ProcessSection: React.FC = () => {
         </motion.div>
 
         <div className="relative pb-16 md:pb-24">
-          {/* Animated connecting line with a significantly lower z-index */}
-          <div className="absolute top-0 left-1/2 md:-translate-x-1/2 h-[95%] w-1.5 bg-gradient-to-b from-purple-600/30 to-indigo-600/30 z-[-5]">
+          {/* Animated connecting line - visible on mobile and desktop */}
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-600/30 to-indigo-600/30 md:block hidden">
             <motion.div
               className="w-full bg-gradient-to-b from-purple-600 to-indigo-600 absolute top-0 left-0"
               style={{ height: lineProgressY }}
@@ -534,8 +526,7 @@ const ProcessSection: React.FC = () => {
             />
           </div>
 
-          {/* Grid container with higher z-index */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-8 relative">
             {processSteps.map((step, index) => (
               <ProcessStep
                 key={index}
